@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EtatVertController!{% endblock %}
+{% block PlaceHolderCss%} {% endblock%}
+{% block breadcrumb%}
+    <li>Accueil</li>
+    <li>Blank Page</li>
+{% endblock%}
+
+{% block main %}
+    <div id="content">
+        <div class="row">
+            <article class="col-sm-6 col-md-6 col-lg-6 sortable-grid ui-sortable">
+                <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                    <header role="heading">
+                        <div class="jarviswidget-ctrls" role="menu"><a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a><a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a><a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
+                        <span class="widget-icon"><i class="fa fa-edit"></i></span>
+                        <h2>Enregistrement</h2>
+                        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                    </header>
+                    <div role="content">
+                        <div class="jarviswidget-editbox">
+                        </div>
+                        <div class="widget-body no-padding">
+                            {#{{ form (formulaire) }}#}
+                            {{ form_start(formulaire) }}
+                            <div class="smart-form">
+                                <header>
+                                    ....
+                                </header>
+                                <fieldset>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{form_widget(formulaire.libelle, {'attr':{'placeholder': "Raison social"}})}}
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{form_widget(formulaire.rccm, {'attr':{'placeholder': "RCCM"}})}}
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{form_widget(formulaire.nomdirecteur, {'attr':{'placeholder': "Nom du directeur"}})}}
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{form_widget(formulaire.nomcreateur, {'attr':{'placeholder': "Nom Créateur"}})}}
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{"now"|date("m/d/Y") }}
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{form_widget(formulaire.nomresponsablecomptable, {'attr':{'placeholder': "Nom Comptable"}})}}
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="input">
+                                                {{form_widget(formulaire.logo)}}
+                                            </label>
+                                        </section>
+                                    </div>
+                                </fieldset>
+                                <footer>
+                                    <button type="submit"  class="btn btn-primary">
+                                        Valider
+                                    </button>
+                                    <button type="reset" class="btn btn-default">
+                                        Annuler
+                                    </button>
+                                </footer>
+                            </div>
+                            {{ form_end(formulaire) }}
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scriptContent %}
+
+{% endblock%}

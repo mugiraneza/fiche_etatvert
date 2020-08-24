@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}Hello EtatVertController!{% endblock %}#}
+{% block PlaceHolderCss%} {% endblock%}
+{% block breadcrumb%}
+    <li>Accueil</li>
+    <li>Blank Page</li>
+{% endblock %}
+
+{% block main %}
+    <!-- row -->
+
+    <div class="row" onmouseover="{% if not traitement%}{{"boom()"}}{% endif %}">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-11">
+            <h1 class="page-title txt-color-blueDark" id="description">
+                <!-- PAGE HEADER -->
+                <i class="fa-fw fa fa-home"></i>
+                N°: 1000792826<span> > TABLEAU RECAPITULATIF DES TRAITEMENTS, SALAIRES ET RETRIBUTIONS DE TOUTES NATURE VERSES AUX SALARIES DE L'ENTREPRISE </span>
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-1">
+            <!-- sparks -->
+            <button id="btnCalcule" class="btn btn-success hidden pull-right header-btn">Calculer</button>
+            <!-- end sparks -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <div class="table-responsive" id="tableauEtatVert">
+                    <table class='table table-bordered'>
+                        <thead>
+                        <tr>
+                            <th rowspan='2' class=''>N° D'ORDRE</th>
+                            <th rowspan='2' class=''>DESIGNATION DES PERSONNES</th>
+                            <th rowspan='2' class=''>EXPATRIE= E NON EXPATRIE = N</th>
+                            <th rowspan='2' class=''>NATIONALITE</th>
+                            <th rowspan='2' class=''>SEXE</th>
+                            <th colspan='3' class=''>SITUATION DE FAMILLE</th>
+                            <th rowspan='2' class=''>PERIODE A LAQUELLE SE RAPPORTENT LES PAIEMENTS</th>
+                            <th rowspan='2' class=''>MONTANTS BRUTS DES REMUNERATIONS</th>
+                            <th rowspan='2' class=''>EVALUATION DES AVANTAGES</th>
+                            <th rowspan='2' class=''>TOTAL BRUT</th>
+                            <th rowspan='2' class=''>DEDUCTIONS AUTORISEES</th>
+                            <th colspan='2' class=''>RET. EFFECTUEE AU TITRE DE</th>
+                            <th rowspan='2' class=''>INDEMNITES POUR FRAIS D'EMPLOI NON IMPOSABLE ET NON COMPRISE</th>
+                            <th rowspan='2' class=''>N° DE SECURITE SOCIALE</th>
+                        </tr>
+                        <tr>
+                            <th>CMDVS</th>
+                            <th>NBRES D'ENFANTS A CHARGE</th>
+                            <th>NOMBRES D'EPOUSES</th>
+                            <th>IMPÔT SUR LE REVENU</th>
+                            <th>TAXE COMPL. (TCS)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {%for element in etat_verts %}
+                        <tr data-code="{{element.PERSONNELID}}" onclick="changerpage('#')" >
+                        <td >  #</td>
+                        <td >  {{element.PERSONNELNOM ~" "~ element.PERSONNELPRENOM}}</td>
+                        <td >  {{element.EXPATRIER}}</td>
+                        <td >  {{element.PERSONNELNATIONALITE}}</td>
+                        <td >  {{element.PERSONNELSEX}}</td>
+                        <td >  {{element.PERSONNELSITUATIONFAMILLE}}</td>
+                        <td >  {{element.PERSONNELENFANTSCHARGE}}</td>
+                        <td >  {{element.PERSONNELNOMBREPOUX_SE}}</td>
+                        <td >  {{element.PERIODE}}</td>
+                        <td >  {{element.ETATSA}} </td>
+                        <td >  {{element.EVALUATION}}  </td>
+                        <td >  {{element.TOTALBRUTE}}  </td>
+                        <td >  {{element.DEDUCTION_AUT}}  </td>
+                        <td >  {{element.ETATIRPP}}  </td>
+                        <td >  {{element.TCS }} </td>
+                        <td >  {{element.ETATOPOS}}  </td>
+                        <td >  {{element.PERSONNELNUMSECURITESOCIALE}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-lg hidden" id="DocFinderBtn" type="button" data-toggle="modal"
+            data-target="#ShowDocFinder">
+        Launch Dossier Selector
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="ShowDocFinder" tabindex="-1" role="dialog"  aria-labelledby="ShowDocFinderLabel"
+         aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="lblPasValidemessageConsult">Article Post</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well well-sm well-primary">
+                                <form action="{{ path('dossier_choix') }}" method="post" class="form form-inline " role="form">
+                                    <div class="form-group">
+                                        <select class="form-control" id="_dossier" name="_dossier">
+                                            {% for doc in dossier %}
+                                                <option  value="{{doc.id}}">{{ doc.annee}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <a class="btn btn-success btn-sm" href="{{ path('creedossier') }}"><span class="glyphicon glyphicon-plus"></span></a>
+                                        <button type="submit" class="btn btn-success btn-sm" >
+                                            <span class="glyphicon glyphicon-floppy-disk"></span>Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+{% endblock %}
+
+{% block scriptContent %}
+    <script>
+        function boom(){
+            ShowPasvalideConsult();
+        }
+    </script>
+    <script>
+        function ShowPasvalideConsult() {
+            //$("#ShowDocFinder").click();.trigger( "click" );
+            $("#DocFinderBtn").trigger("click");
+            //alert(2);
+        }
+        function DocEchanger() {
+            ShowPasvalideConsult();
+        };
+    </script>
+    <script>
+        function changerpage(id) {
+            window.location = id;
+        }
+    </script>
+{% endblock %}

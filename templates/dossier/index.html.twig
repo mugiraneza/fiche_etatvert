@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EtatVertController!{% endblock %}
+{% block PlaceHolderCss%} {% endblock%}
+{% block breadcrumb%}
+    <li>Accueil</li>
+    <li>Blank Page</li>
+{% endblock%}
+
+{% block main %}
+        <button class="btn btn-primary btn-lg hidden" id="DocFinderBtn" type="button" data-toggle="modal" data-target="#ShowDocFinder">
+            Launch Dossier Selector
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="ShowDocFinder" tabindex="-1" role="dialog" aria-labelledby="ShowDocFinderLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="lblPasValidemessageConsult" >Article Post</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well well-sm well-primary">
+                                    <form action="{{ path('dossier_choix') }}" method="post" class="form form-inline " role="form">
+                                        <div class="form-group">
+                                            <select class="form-control" id="_dossier" name="_dossier">
+                                                {% for doc in dossier %}
+                                                    <option  value="{{doc.id}}">{{ doc.annee}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <a class="btn btn-success btn-sm" href="{{ path('creedossier') }}"><span class="glyphicon glyphicon-plus"></span></a>
+                                            <button type="submit" class="btn btn-success btn-sm" >
+                                                <span class="glyphicon glyphicon-floppy-disk"></span>Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+{% endblock %}
+
+{% block scriptContent %}
+    <script>
+        $(document).ready(function () {
+            DocEchanger();
+        })
+        function ShowPasvalideConsult() {
+            //$("#ShowDocFinder").click();.trigger( "click" );
+            $("#DocFinderBtn").trigger("click");
+            //alert(2);
+        }
+        function DocEchanger() {
+            ShowPasvalideConsult();
+        };
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#eg6').click(function () {
+
+                $.smallBox({
+                    title: "Enregistrement",
+                    content: "Opération validée avec succes",
+                    color: "#5384AF",
+                    //timeout: 8000,
+                    icon: "fa fa-bell"
+                });
+            })
+        })
+    </script>
+{% endblock%}

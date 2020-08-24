@@ -1,0 +1,60 @@
+{% extends 'reg.temp.html.twig' %}
+{% block PlaceHolderForm%}
+                    {{ form_start(formulaire,{'attr':{ 'class':'smart-form client-form'}}) }}
+                        <header>
+                            Registration is FREE*
+                        </header>
+
+                        <fieldset>
+                            <section>
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    {{form_widget(formulaire.Login,{'attr':{ 'placeholder':'login'}} )}}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+                            <section>
+                                <label class="input"> <i class="icon-append fa fa-envelope"></i>
+                                    {{form_widget(formulaire.mail,{'attr':{ 'placeholder':'E mail'}})}}
+                                    <b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
+                            </section>
+
+                            <section>
+                                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                    {{form_widget(formulaire.password,{'attr':{ 'placeholder':'password'}})}}
+                                    <b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+                            </section>
+
+                            <section>
+                                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                    {{form_widget(formulaire.confirm_password,{'attr':{ 'placeholder':'confirm password'}})}}
+                                    <b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+                            </section>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="row">
+                                <section class="col col-6">
+                                    <label class="input">
+                                        {{form_widget(formulaire.nom,{'attr':{ 'placeholder':'nom'}})}}
+                                    </label>
+                                </section>
+                                <section class="col col-6">
+                                    <label class="input">
+                                        {{form_widget(formulaire.prenom,{'attr':{ 'placeholder':'prenom'}})}}
+                                    </label>
+                                </section>
+                                <section class="col col-6">
+                                    <label class="input">
+                                        {{form_widget(formulaire.entreprise)}}
+                                    </label>
+                                </section>
+                            </div>
+
+                        </fieldset>
+                        <footer>
+                            <button type="submit" class="btn btn-primary">
+                                Register
+                            </button>
+                        </footer>
+                    {{ form_end(formulaire) }}
+{% endblock%}

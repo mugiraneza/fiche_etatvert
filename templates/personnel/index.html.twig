@@ -1,0 +1,302 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello EtatVertController!{% endblock %}
+{% block PlaceHolderCss%} {% endblock%}
+{% block breadcrumb%}
+    <li>Accueil</li>
+    <li>Blank Page</li>
+{% endblock%}
+
+{% block main %}
+    {{ form_start(formulaire) }}
+        <div id="content">
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                        <header role="heading">
+                            <div class="jarviswidget-ctrls" role="menu"><a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a><a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a><a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
+                            <span class="widget-icon"><i class="fa fa-edit"></i></span>
+                            <h2>Enregistrement</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <div class="smart-form">
+                                    <header>
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Fiche de renseignements salarié</label>
+                                                <div class="col-md-3">
+                                                    <label class="select col-12">
+                                                        {{form_widget(formulaire.dossier, {'attr': {'class': 'input-sm'}}) }}
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="select col-12">
+                                                        {{form_widget(formulaire.entreprise, {'attr': {'class': 'input-sm'}}) }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </header>
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-3">
+                                                <label class="label">
+                                                    Matricule
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.matricule, {'attr':{'placeholder': "XXXXX"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-4">
+                                                <label class="label">
+                                                    Nom
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.nom, {'attr':{'placeholder': "Nom"}})}}
+                                                </label>
+                                            </section>
+
+                                            <section class="col col-5">
+                                                <label class="label">
+                                                    Prénom
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.prenom, {'attr':{'placeholder': "Prénom"}})}}
+                                                </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Date de Naissance
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.datenaissance, {'attr': {'class': 'form-control input-inline datetimepicker'}}) }}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Nationalité
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.nationalite, {'attr':{'placeholder': "Nationalité"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Carte de séjour
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.numcartesejour, {'attr':{'placeholder': "Num de carte séjour"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Date de validité
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.datevalidite, {'attr': {'class': 'form-control input-inline datetimepicker'}}) }}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Situation de famille
+                                                </label>
+                                                <label class="select">
+                                                    {{form_widget(formulaire.situationfamille, {'attr': {'class': 'input-sm'}}) }}
+                                                </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Enfants à charge
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.enfantscharge, {'attr':{'placeholder': "Enfants à charge"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-5">
+                                                <label class="label">
+                                                    N° de sécurité sociale
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.numsecuritesociale, {'attr':{'placeholder': "num de sécurité sociale"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Nombre d'épou(x)(se)
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.nombre_epoux_se, {'attr':{'placeholder': "Nombre d'epou(x)(se)"}})}}
+                                                </label>
+                                            </section>
+
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Sexe
+                                                </label>
+                                                <label class="select">
+                                                    {{form_widget(formulaire.sex, {'attr': {'class': 'input-sm'}}) }}
+                                                </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-3">
+                                                <label class="label">
+                                                    Adresse
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.adresse, {'attr':{'placeholder': "Adresse"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Code Postal
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.codepostal, {'attr':{'placeholder': "Code postal"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Ville
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.ville_code_postal, {'attr':{'placeholder': "Ville"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Tél.
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.tel, {'attr':{'placeholder': "Tel"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-3">
+                                                <label class="label">
+                                                    Mail
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.mail, {'attr':{'placeholder': "Mail"}})}}
+                                                </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-3">
+                                                <label class="label">
+                                                    Emploie
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.emploi, {'attr':{'placeholder': "Emploie"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-5">
+                                                <label class="label">
+                                                    Qualification
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.qualification, {'attr':{'placeholder': "Qualification"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Contrat
+                                                </label>
+                                                <label class="select">
+                                                    {{form_widget(formulaire.cocontrat, {'attr': {'class': 'input-sm'}}) }}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Durée(mois)
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.dureemois, {'attr':{'placeholder': "Durée(mois)"}})}}
+                                                </label>
+                                            </section>
+
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Salaire mensuel
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.salaire_mensuel, {'attr':{'placeholder': "Salaire mensuel"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Avantages en natures
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.avantages_natures, {'attr':{'placeholder': "Avantages en natures"}})}}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Date d'entrée
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.date_entree, {'attr': {'class': 'form-control input-inline datetimepicker'}}) }}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Date de sortie
+                                                </label>
+                                                <label class="input">
+                                                    {{form_widget(formulaire.datesortie, {'attr': {'class': 'form-control input-inline datetimepicker'}}) }}
+                                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label">
+                                                    Situation avant l'embauche
+                                                </label>
+                                                <label class="select">
+                                                    {{form_widget(formulaire.situationembauche, {'attr': {'class': 'input-sm'}}) }}
+                                                </label>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+                                    <footer>
+                                        <button type="submit" class="btn btn-primary" id="BtnValider">
+                                            Valider
+                                        </button>
+                                        <button type="reset" class="btn btn-default">
+                                            Annuler
+                                        </button>
+                                    </footer>
+                                </div>
+                            </div>
+                            <!-- end widget content -->
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+        </div>
+        <ul class="demo-btns ">
+            <li>
+                <button type="button" id="eg6" class="btn btn-default">
+                    With Icon
+                </button>
+            </li>
+        </ul>
+    {{ form_end(formulaire, {'render_rest': true}) }}
+{% endblock %}
+
+{% block scriptContent %}
+
+{% endblock%}
